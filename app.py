@@ -26,12 +26,9 @@ es = Elasticsearch(
 
 @app.route('/')
 def hello_world():
-    log.info("Serving all env vars and relationships")
     lines = []
-    log.info("Relationships = %s", repr(relationships))
     lines.append( "<tt>relationships={0}</tt>".format(repr(relationships)))
     for k, v in os.environ.items():
-        log.info("Env %s = %s", k, v)
         lines.append( "<li>{0}={1}</li>".format(k, v) )
     doc = {
         'author': 'kimchy',
