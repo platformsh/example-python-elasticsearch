@@ -12,6 +12,11 @@ type: 'python:3.6'
 relationships:
     elasticsearch: "myes:elasticsearch"
 
+# The build-time dependencies of the app.
+dependencies:
+    python:
+       pipenv: '*'
+
 hooks:
   build: |
     pipenv install --system
