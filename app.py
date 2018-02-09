@@ -27,9 +27,6 @@ es = Elasticsearch(
 @app.route('/')
 def hello_world():
     lines = []
-    lines.append( "<tt>relationships={0}</tt>".format(repr(relationships)))
-    for k, v in os.environ.items():
-        lines.append( "<li>{0}={1}</li>".format(k, v) )
     doc = {
         'author': 'kimchy',
         'text': 'Elasticsearch: cool. bonsai cool.',
@@ -39,7 +36,10 @@ def hello_world():
     res = es.get(index="test-index", doc_type='tweet', id=1)
     es.indices.refresh(index="test-index")
     res = es.search(index="test-index", body={"query": {"match_all": {}}})
-    lines.append("Got %d Hits from Elastic Search:" % res['hits']['total'])
+    lines.append("<h1>Got %d Hits from Elastic Search</h1>" % res['hits']['total'])
     for hit in res['hits']['hits']:
         lines.append("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
+    lines.append( "<tt>relationships={0}</tt>".format(repr(relationships)))
+    for k, v in os.environ.items():
+        lines.append( "<li>{0}={1}</li>".format(k, v) )
     return "\n".join(lines)
