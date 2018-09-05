@@ -7,7 +7,7 @@
 name: 'app'
 
 # The runtime the application uses.
-type: 'python:3.6'
+type: 'python:3.7'
 
 relationships:
     elasticsearch: "myes:elasticsearch"
