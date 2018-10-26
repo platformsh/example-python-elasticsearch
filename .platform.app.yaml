@@ -14,7 +14,7 @@ relationships:
 
 # The build-time dependencies of the app.
 dependencies:
-    python:
+    python3:
        pipenv: '*'
 
 hooks:
