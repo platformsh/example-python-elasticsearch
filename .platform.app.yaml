@@ -15,11 +15,11 @@ relationships:
 # The build-time dependencies of the app.
 dependencies:
     python3:
-       pipenv: '*'
+       pipenv: '2018.10.13'
 
 hooks:
   build: |
-    pipenv install --system
+    pipenv install --system --deploy
 
 variables:
   env:
